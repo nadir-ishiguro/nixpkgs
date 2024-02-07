@@ -18206,6 +18206,7 @@ with pkgs;
     fltk = fltk13;
   };
 
+<<<<<<< HEAD
   cantata = callPackage ../by-name/ca/cantata/package.nix {
     ffmpeg = ffmpeg_6;
   };
@@ -18237,5 +18238,5 @@ with pkgs;
   rustdesk-flutter = callPackage ../by-name/ru/rustdesk-flutter/package.nix {
     flutter = flutter324;
   };
-  kdrive = callPackage ../applications/misc/kdrive { };
+  kdrive = qt6Packages.callPackage ../applications/misc/kdrive { };
 }
