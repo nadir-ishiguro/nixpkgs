@@ -1,36 +1,36 @@
 {
-  lib
-  , stdenv
-  , fetchFromGitHub
-  , cmake
-  , glib
-  , libgcrypt
-  , libGL
-  , libgpg-error
-  , libsecret
-  , libxkbcommon
-  , log4cplus
-  , openssl_3_3
-  , pkg-config
-  , poco
-  , qt6
-  , sentry-native
-  , shared-mime-info
-  , sqlite
-  , vulkan-headers
-  , xxHash
-  , zlib
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  glib,
+  libgcrypt,
+  libGL,
+  libgpg-error,
+  libsecret,
+  libxkbcommon,
+  log4cplus,
+  openssl_3_4,
+  pkg-config,
+  poco,
+  qt6,
+  sentry-native,
+  shared-mime-info,
+  sqlite,
+  vulkan-headers,
+  xxHash,
+  zlib,
 }:
 
 stdenv.mkDerivation rec {
   pname = "kDrive";
-  version = "3.6.1";
+  version = "3.6.9";
 
   src = fetchFromGitHub {
     owner = "infomaniak";
     repo = "desktop-kDrive";
     rev = version;
-    hash = "sha256-Aq7/cYIntVglfaAgKJsbfvTzwPcSWQkR4O0Sc+puhpw=";
+    hash = "sha256-TDitGJdXDQrBuEHupXLGcSgpIhPBvDphTthcq6ZC8LA=";
   };
 
   buildInputs = [
@@ -43,7 +43,7 @@ stdenv.mkDerivation rec {
     libxkbcommon
     # This is required because kdrive needs the log4cplusConfig.cmake file, which is only generated when built with cmake
     # Since log4cplus is built with make in nixpkgs, we rebuild it with cmake
-    (log4cplus.overrideAttrs(_: {
+    (log4cplus.overrideAttrs (_: {
       nativeBuildInputs = [ cmake ];
 
       # kDrive is using the unicode version of log4cplus
@@ -52,7 +52,7 @@ stdenv.mkDerivation rec {
       # See this issue for why the patch is needed: https://github.com/NixOS/nixpkgs/issues/144170
       patches = [ ./log4cplus-CMakeLists.txt.patch ];
     }))
-    openssl_3_3
+    openssl_3_4
     pkg-config
     poco
     qt6.qt5compat
