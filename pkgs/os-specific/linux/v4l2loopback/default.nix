@@ -8,7 +8,7 @@
 }:
 
 let
-  version = "0.13.2";
+  version = "0.15.0";
 
 in
 stdenv.mkDerivation {
@@ -16,10 +16,10 @@ stdenv.mkDerivation {
   version = "${version}-${kernel.version}";
 
   src = fetchFromGitHub {
-    owner = "umlaeute";
+    owner = "v4l2loopback";
     repo = "v4l2loopback";
     rev = "v${version}";
-    hash = "sha256-rcwgOXnhRPTmNKUppupfe/2qNUBDUqVb3TeDbrP5pnU=";
+    hash = "sha256-fa3f8GDoQTkPppAysrkA7kHuU5z2P2pqI8dKhuKYh04=";
   };
 
   hardeningDisable = [
