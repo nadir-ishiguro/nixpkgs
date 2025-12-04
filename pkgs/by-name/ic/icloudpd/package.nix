@@ -63,6 +63,7 @@ python3Packages.buildPythonApplication rec {
     "test_retry_fail_delete_after_download_internal_error"
     "test_autodelete_invalid_creation_date"
     "test_folder_structure_de_posix"
+    "test_missing_directory"
   ];
 
   passthru = {
